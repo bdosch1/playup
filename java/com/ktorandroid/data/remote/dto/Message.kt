@@ -13,4 +13,8 @@ data class Message(
     getDate
     return Message(
         text = text
-        formattedTime =
+        formattedTime = formattedDate,
+        username = username
+      )
+  }
+}
