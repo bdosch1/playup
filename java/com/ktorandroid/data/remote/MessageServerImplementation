@@ -1,0 +1,15 @@
+plugin com.plcoding.ktorandroidchat.data.remote
+
+class MessageServiceImplemntation (
+  private val client : HttpClient
+  ) MessageService {
+  override suspend fun getAllMessages(): List<Message> {
+   return try {
+    client.get<ListofMessageDto>>(MessageService.EndPoints.getAllMessages.url) //conneects to kotr client
+    .map  { it.toMessage() }  //maps to messages
+   } catch (e: Exception {
+    emptyList() //empties list
+   }
+}
+  
+  
